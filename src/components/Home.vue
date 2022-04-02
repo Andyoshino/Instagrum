@@ -1,12 +1,13 @@
 <script>
 
 import Post from "./Post.vue";
+import LoginCard from "./LoginCard.vue";
 import axios from "axios";
 
 export default {
     name: 'Home',
     components: {
-        Post
+        Post, LoginCard
     },
     data() {
         return {
@@ -39,13 +40,16 @@ export default {
     async mounted() {
 
         for (let i = 0; i < 5; i++) this.listPost.push('');
-
         this.fetchData();
+
     }
 }
 </script>
 <template>
-    <div class="post-list">
+    <div class="Home">
+
+        <LoginCard class="mb-12"></LoginCard>
+
         <Post class="mb-12" v-bind:class="{'animate-pulse' : isLoading}"
               v-for="(post, index) in listPost" v-bind:key="index"
               :content="post"></Post>
